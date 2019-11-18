@@ -200,16 +200,10 @@ public class UserService implements IUserService{
             TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u WHERE u.Username = :username AND u.Password = :pass", User.class);
             query.setParameter("username",Username);
             query.setParameter("pass",Password);
-            user = query.getSingleResult();
             entityManager.getTransaction().commit();
+            user = query.getSingleResult();
 
         } catch (Exception e){
-
-            if (entityManager.getTransaction() != null){
-
-                entityManager.getTransaction().rollback();
-
-            }
 
             System.out.println("Error in LogIn Transaction");
 
