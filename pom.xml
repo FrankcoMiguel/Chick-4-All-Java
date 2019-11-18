@@ -45,6 +45,14 @@
             <version>1.4.200</version>
         </dependency>
 
+        <!-- Font Awesome 4.7 - Icons Art -->
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>fontawesome</artifactId>
+            <version>4.7.0</version>
+        </dependency>
+
+
 
     </dependencies>
 
