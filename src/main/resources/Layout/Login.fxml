@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:controller="Controller.UserController" id="login-background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../Styles/Login.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="login-background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../Styles/Login.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserController">
    <children>
       <GridPane alignment="CENTER" layoutX="176.0" layoutY="110.0" prefHeight="500.0" prefWidth="729.0">
         <columnConstraints>
@@ -39,7 +39,7 @@
                         <Image url="@../Media/logo-type-256.png" />
                      </image>
                   </ImageView>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Powered by A&amp;F Technology">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Powered by Mr.Chutte Technology">
                      <font>
                         <Font name="Helvetica" size="16.0" />
                      </font>
