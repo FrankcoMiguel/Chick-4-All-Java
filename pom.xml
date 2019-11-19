@@ -45,11 +45,11 @@
             <version>1.4.200</version>
         </dependency>
 
-        <!-- Font Awesome 4.7 - Icons Art -->
+        <!-- Font Awesome 8.9 - Icons Art -->
         <dependency>
-            <groupId>org.webjars.bower</groupId>
-            <artifactId>fontawesome</artifactId>
-            <version>4.7.0</version>
+            <groupId>de.jensd</groupId>
+            <artifactId>fontawesomefx</artifactId>
+            <version>8.9</version>
         </dependency>
 
         <!-- JFoenix 9.0.9 Great Controls like Buttons, Text fields, etc.. -->
