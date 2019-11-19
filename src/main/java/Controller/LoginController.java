@@ -6,20 +6,12 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
-import com.sun.javafx.geom.BaseBounds;
-import com.sun.javafx.geom.transform.BaseTransform;
-import com.sun.javafx.scene.BoundsAccessor;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.effect.Effect;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import org.hibernate.engine.spi.EffectiveEntityGraph;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,7 +20,7 @@ public class LoginController implements Initializable {
 
     //Controls
     @FXML
-    protected ImageView closeButton, signUp;
+    protected ImageView closeButton, altButton;
     @FXML
     protected AnchorPane mainPane;
     @FXML
@@ -56,12 +48,12 @@ public class LoginController implements Initializable {
         AbstractController.closeApp(closeButton);
 
         userService = new UserService();
-        userService.AddUser(new User("809","Franko","root"));
+        Login(); //Login method
+        SwitchSignup();
 
-        Login();
+
 
     }
-
 
     private void Login(){
 
@@ -76,18 +68,29 @@ public class LoginController implements Initializable {
                     loginPane.setDisable(true);
                     loginPane.setOpacity(0.40);
                     loadingPane.setVisible(true);
-
                 }
+
+                username.clear();
+                password.clear();
 
             } else {
 
-                System.out.println("put your credentials xd");
+                //Alerts
+                System.out.println("Put your credentials");
 
             }
 
         });
 
     }
+
+    private void SwitchSignup(){
+
+        AbstractController abstractController = new AbstractController();
+        abstractController.switchStage(altButton, "Signup");
+
+    }
+
 
 
 
