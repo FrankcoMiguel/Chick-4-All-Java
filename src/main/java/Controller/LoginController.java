@@ -24,7 +24,7 @@ import org.hibernate.engine.spi.EffectiveEntityGraph;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class UserController implements Initializable {
+public class LoginController implements Initializable {
 
     //Controls
     @FXML
