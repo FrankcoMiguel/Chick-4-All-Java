@@ -44,7 +44,6 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        AbstractController.dragApp(mainPane);
         AbstractController.closeApp(closeButton);
 
         userService = new UserService();
