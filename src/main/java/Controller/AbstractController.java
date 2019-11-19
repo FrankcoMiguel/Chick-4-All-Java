@@ -1,26 +1,25 @@
 package Controller;
 
-import javafx.event.EventHandler;
+
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class AbstractController {
+    class AbstractController {
 
     private static double x, y;
     Stage stage;
 
 
-    public static void closeApp(ImageView close){
+    static void closeApp(ImageView close){
 
         close.setOnMouseClicked(event -> System.exit(0));
 
     }
 
-    public static void dragApp(Pane pane){
+    static void dragApp(Pane pane){
 
         pane.setOnMousePressed(event -> {
 

@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXSpinner?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
@@ -14,11 +15,12 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="login-background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../Styles/Login.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserController">
+<AnchorPane id="login-background" fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../Styles/Login.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserController">
    <children>
       <GridPane alignment="CENTER" layoutX="176.0" layoutY="110.0" prefHeight="500.0" prefWidth="729.0">
         <columnConstraints>
@@ -45,94 +47,109 @@
                      </font>
                   </Text>
                </children></VBox>
-            <VBox id="right-login-box" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="30.0" GridPane.columnIndex="1">
+            <StackPane id="right-login-box" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <HBox layoutX="10.0" layoutY="99.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="1.0" prefWidth="388.0">
+                  <VBox id="right-login-box" fx:id="loginPane" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
                      <children>
-                        <ImageView layoutX="331.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Media/CustomIcons/Cancel.png" />
-                           </image>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                        <Separator prefHeight="3.0" prefWidth="291.0" visible="false" />
-                        <ImageView pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Media/CustomIcons/Menu.png" />
-                           </image>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                     </children>
-                     <padding>
-                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-                     </padding>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="1.0" prefWidth="388.0">
-                     <children>
-                        <Text fill="#e85454" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back">
-                           <font>
-                              <Font name="Helvetica Bold" size="28.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-                  <VBox alignment="CENTER" spacing="40.0">
-                     <children>
-                        <HBox alignment="CENTER">
+                        <HBox layoutX="10.0" layoutY="99.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="1.0" prefWidth="388.0">
                            <children>
-                              <JFXTextField id="text-field" focusColor="#e85454" prefHeight="33.0" prefWidth="225.0" promptText="Username" unFocusColor="#ff9f9f">
-                                 <font>
-                                    <Font name="Helvetica Bold" size="18.0" />
-                                 </font>
-                              </JFXTextField>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0">
-                           <children>
-                              <JFXPasswordField id="text-field" focusColor="#e85454" prefHeight="32.0" prefWidth="225.0" promptText="Password" unFocusColor="#ff9f9f" />
-                           </children>
-                        </HBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                     </padding>
-                  </VBox>
-                  <VBox>
-                     <children>
-                        <HBox alignment="CENTER" prefHeight="43.0" prefWidth="388.0">
-                           <children>
-                              <JFXButton id="login-button" prefHeight="46.0" prefWidth="215.0" text="Log in" textFill="WHITE">
-                                 <font>
-                                    <Font name="Helvetica Bold" size="14.0" />
-                                 </font>
-                                 <padding>
-                                    <Insets bottom="18.0" left="18.0" right="18.0" top="18.0" />
-                                 </padding>
-                              </JFXButton>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="43.0" prefWidth="388.0">
-                           <children>
-                              <Text fill="#e85454" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="I forgot my password">
-                                 <font>
-                                    <Font name="Helvetica Bold" size="12.0" />
-                                 </font>
+                              <ImageView fx:id="closeButton" layoutX="331.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Media/CustomIcons/Cancel.png" />
+                                 </image>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
+                              </ImageView>
+                              <Separator prefHeight="3.0" prefWidth="291.0" visible="false" />
+                              <ImageView fx:id="signUp" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Media/CustomIcons/Menu.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </children>
+                           <padding>
+                              <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="1.0" prefWidth="388.0">
+                           <children>
+                              <Text fill="#e85454" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back">
+                                 <font>
+                                    <Font name="Helvetica Bold" size="28.0" />
+                                 </font>
                               </Text>
                            </children>
                         </HBox>
+                        <VBox alignment="CENTER" spacing="40.0">
+                           <children>
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <JFXTextField id="text-field" fx:id="username" focusColor="#e85454" prefHeight="33.0" prefWidth="225.0" promptText="Username" unFocusColor="#ff9f9f">
+                                       <font>
+                                          <Font name="Helvetica" size="18.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0">
+                                 <children>
+                                    <JFXPasswordField id="text-field" fx:id="password" focusColor="#e85454" prefHeight="32.0" prefWidth="225.0" promptText="Password" unFocusColor="#ff9f9f" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                        <VBox spacing="10.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="43.0" prefWidth="388.0">
+                                 <children>
+                                    <JFXButton id="login-button" fx:id="loginButton" prefHeight="46.0" prefWidth="215.0" text="Log in" textFill="WHITE">
+                                       <font>
+                                          <Font name="Helvetica Bold" size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="18.0" left="18.0" right="18.0" top="18.0" />
+                                       </padding>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="43.0" prefWidth="388.0">
+                                 <children>
+                                    <Text fx:id="forgetPassword" fill="#e85454" fontSmoothingType="LCD" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="I forgot my password">
+                                       <font>
+                                          <Font name="Helvetica Bold" size="13.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
                      </children>
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding>
                   </VBox>
-               </children></VBox>
+                  <VBox fx:id="loadingPane" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="30.0" visible="false">
+                     <children>
+                        <JFXSpinner fx:id="loadingSpinner" />
+                        <Text fx:id="loadingStatus" fill="#e85454" strokeType="OUTSIDE" strokeWidth="0.0" text="Login..">
+                           <font>
+                              <Font name="Helvetica Bold" size="14.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+               </children>
+            </StackPane>
          </children>
       </GridPane>
    </children>

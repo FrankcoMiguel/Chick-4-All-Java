@@ -4,20 +4,29 @@ import Model.User;
 import Service.UserService;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
+import com.sun.javafx.geom.BaseBounds;
+import com.sun.javafx.geom.transform.BaseTransform;
+import com.sun.javafx.scene.BoundsAccessor;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.effect.Effect;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import org.hibernate.engine.spi.EffectiveEntityGraph;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class UserController implements Initializable {
 
+    //Controls
     @FXML
     protected ImageView closeButton, signUp;
     @FXML
@@ -29,11 +38,17 @@ public class UserController implements Initializable {
     @FXML
     protected JFXButton loginButton;
     @FXML
-    protected Text forgetPassword;
+    protected Text forgetPassword, loadingStatus;
+    @FXML
+    protected VBox loginPane, loadingPane;
+    @FXML
+    protected JFXSpinner loadingSpinner;
 
+    //User Service
     private UserService userService;
 
 
+    //Init method
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -50,24 +65,23 @@ public class UserController implements Initializable {
 
     private void Login(){
 
-        loginButton.setOnMouseClicked(event -> {
+        loginButton.setOnAction(event -> {
 
             if (!username.getText().isEmpty() && !password.getText().isEmpty()){
 
-                userService = new UserService();
                 boolean result = userService.LogIn(username.getText(), password.getText());
 
                 if (result){
 
-                    // Logic login
-                    System.out.println("Access granted");
-
-                } else {
-
-                    // Logic wrong credentials
-                    System.out.println("Wrong credentials");
+                    loginPane.setDisable(true);
+                    loginPane.setOpacity(0.40);
+                    loadingPane.setVisible(true);
 
                 }
+
+            } else {
+
+                System.out.println("put your credentials xd");
 
             }
 

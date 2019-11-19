@@ -213,13 +213,7 @@ public class UserService implements IUserService{
 
         }
 
-        if (user != null){
-
-            return true;
-
-        }
-
-        return false;
+        return user != null;
     }
 
 }
