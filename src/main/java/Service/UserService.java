@@ -205,7 +205,8 @@ public class UserService implements IUserService{
 
         } catch (Exception e){
 
-            System.out.println("Error in LogIn Transaction");
+            System.out.println("User not found!");
+            return false;
 
         } finally {
 
