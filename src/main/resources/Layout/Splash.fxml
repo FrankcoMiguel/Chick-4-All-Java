@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="splash-background" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../Styles/Splash.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SplashScreen">
+    <children>
+        <StackPane layoutX="254.0" layoutY="163.0" prefHeight="394.0" prefWidth="572.0" AnchorPane.bottomAnchor="162.0" AnchorPane.leftAnchor="254.0" AnchorPane.rightAnchor="254.0" AnchorPane.topAnchor="162.0">
+            <children>
+                <VBox alignment="CENTER" prefHeight="395.0" prefWidth="587.0">
+                    <children>
+                        <ImageView pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../Media/logo-type-256.png" />
+                            </image>
+                     <effect>
+                        <DropShadow height="10.0" radius="4.5" width="10.0" />
+                     </effect>
+                        </ImageView>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+                            <children>
+                                <JFXProgressBar fx:id="bar_loader" prefHeight="6.0" prefWidth="364.0" progress="0.72" />
+                                <Label fx:id="status_loader" text="0%" textFill="WHITE">
+                                    <font>
+                                        <Font name="Apple SD GothicNeo ExtraBold" size="15.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                            <padding>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                            </padding>
+                        </VBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                    </padding>
+                </VBox>
+            </children>
+        </StackPane>
+    </children>
+</AnchorPane>
