@@ -25,17 +25,16 @@ public abstract class ProgressBarController extends Task<Integer> {
 
         long loading = Math.round(workDone);
 
-        if (loading >= 13 && loading <= 24){
+        if (loading >= 13 && loading <= 24) {
 
             updateMessage("Starting up the system");
 
-        } else if (loading >= 39 && loading <= 70){
-
-            updateMessage("Fetching data..");
+        } else if (loading == 45) {
 
             try {
 
                 createCache();
+                updateMessage("Fetching data..");
 
             } catch (Exception e){
 
@@ -43,7 +42,12 @@ public abstract class ProgressBarController extends Task<Integer> {
 
             }
 
-        } else if (loading >= 99){
+        } else if ((loading >= 39 && loading < 45) || (loading > 45 && loading <= 70)) {
+
+            updateMessage("Fetching data..");
+
+        }
+        else if (loading >= 99){
 
             updateMessage("Welcome to Chick-4-All");
 
