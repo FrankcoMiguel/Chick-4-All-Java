@@ -38,7 +38,7 @@
                         <Insets />
                      </VBox.margin>
                      <children>
-                        <JFXButton graphicTextGap="14.0" prefHeight="70.0" prefWidth="318.0" text="Dashboard" textFill="WHITE">
+                        <JFXButton fx:id="dashboardButton" graphicTextGap="14.0" prefHeight="70.0" prefWidth="318.0" text="Dashboard" textFill="WHITE">
                            <font>
                               <Font name="Helvetica Bold" size="17.0" />
                            </font>
@@ -58,7 +58,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefWidth="483.0">
                      <children>
-                        <JFXButton graphicTextGap="14.0" prefHeight="70.0" prefWidth="318.0" text="Order List" textFill="WHITE">
+                        <JFXButton fx:id="orderListButton" graphicTextGap="14.0" prefHeight="70.0" prefWidth="318.0" text="Order List" textFill="WHITE">
                            <font>
                               <Font name="Helvetica Bold" size="17.0" />
                            </font>
@@ -78,7 +78,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="80.0" prefWidth="483.0">
                      <children>
-                        <JFXButton graphicTextGap="14.0" prefHeight="70.0" prefWidth="318.0" text="Customers" textFill="WHITE">
+                        <JFXButton fx:id="customersButton" graphicTextGap="14.0" prefHeight="70.0" prefWidth="318.0" text="Customers" textFill="WHITE">
                            <font>
                               <Font name="Helvetica Bold" size="17.0" />
                            </font>
@@ -98,7 +98,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="150.0" prefWidth="483.0">
                      <children>
-                        <JFXButton graphicTextGap="14.0" prefHeight="70.0" prefWidth="318.0" text="Statistics" textFill="WHITE">
+                        <JFXButton fx:id="statisticsButton" graphicTextGap="14.0" prefHeight="70.0" prefWidth="318.0" text="Statistics" textFill="WHITE">
                            <font>
                               <Font name="Helvetica Bold" size="17.0" />
                            </font>
