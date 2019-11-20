@@ -57,7 +57,7 @@
                            <children>
                               <ImageView fx:id="closeButton" layoutX="331.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Media/CustomIcons/Cancel.png" />
+                                    <Image url="@../Media/CustomIcons/cancel_red.png" />
                                  </image>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
@@ -66,7 +66,7 @@
                               <Separator prefHeight="3.0" prefWidth="291.0" visible="false" />
                               <ImageView fx:id="altButton" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Media/CustomIcons/Menu.png" />
+                                    <Image url="@../Media/CustomIcons/menu_red.png" />
                                  </image>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
