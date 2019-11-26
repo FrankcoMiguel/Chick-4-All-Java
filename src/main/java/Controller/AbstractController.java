@@ -1,5 +1,6 @@
 package Controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -9,6 +10,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -98,6 +100,31 @@ class AbstractController {
 
         }
 
+
+    }
+
+    void setContent(BorderPane contentPane, String Layout){
+
+        try {
+
+            Parent root = FXMLLoader.load(getClass().getResource("../Layout/Content/"+(Layout)+".fxml"));
+            root.translateXProperty().set(contentPane.getWidth());
+            contentPane.setCenter(root);
+
+            Timeline timeline = new Timeline();
+            KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.DISCRETE);
+            KeyFrame kf = new KeyFrame(Duration.millis(100), kv);
+            timeline.getKeyFrames().add(kf);
+            timeline.play();
+
+
+
+        } catch (Exception e){
+
+            System.out.println("Error setting content");
+            e.printStackTrace();
+
+        }
 
     }
 

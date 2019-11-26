@@ -38,13 +38,14 @@ public class LoginController implements Initializable {
 
     //User Service
     private UserService userService;
-
+    private AbstractController abstractController;
 
     //Init method
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         AbstractController.closeApp(closeButton);
+        abstractController = new AbstractController();
 
         userService = new UserService();
         Login(); //Login method
@@ -64,9 +65,12 @@ public class LoginController implements Initializable {
 
                 if (result){
 
-                    loginPane.setDisable(true);
+                    /*loginPane.setDisable(true);
                     loginPane.setOpacity(0.40);
-                    loadingPane.setVisible(true);
+                    loadingPane.setVisible(true); */
+
+                    abstractController.switchStage(loginButton,"BaseHomepage");
+
                 }
 
                 username.clear();

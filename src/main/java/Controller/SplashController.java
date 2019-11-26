@@ -1,5 +1,7 @@
 package Controller;
 
+import Model.User;
+import Service.UserService;
 import com.jfoenix.controls.JFXProgressBar;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +20,7 @@ public class SplashController implements Initializable {
     @FXML
     protected AnchorPane mainPane;
 
+    private UserService userService;
     private AbstractController abstractController;
 
 
@@ -25,7 +28,7 @@ public class SplashController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
+        userService = new UserService();
         AbstractController.dragApp(mainPane);
         progressBar.setProgress(0.0);
         start();
@@ -38,7 +41,7 @@ public class SplashController implements Initializable {
             @Override
             public void createCache() {
 
-                //Call the service which create the cache table
+                userService.AddUser(new User("809-359-7244", "Franco29", "root"));
 
             }
         };
