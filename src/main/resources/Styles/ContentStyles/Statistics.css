@@ -1,0 +1,6 @@
+.panel{
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 3, 0.0 , 0 , 1);
+    -fx-background-color: #F7F7F7;
+
+}

@@ -1,0 +1,7 @@
+.sort-by .focus{
+
+    -fx-focus-color: #e85454;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 3, 0.0 , 0 , 1);
+
+
+}
