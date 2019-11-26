@@ -34,6 +34,8 @@ public class BaseHomepageController implements Initializable {
 
         AbstractController.closeApp(closeButton);
         abstractController = new AbstractController();
+        abstractController.setContent(contentPane,"Dashboard");
+
 
         dashboardButton.setOnAction(event -> abstractController.setContent(contentPane, "Dashboard"));
         orderListButton.setOnAction(event -> abstractController.setContent(contentPane, "OrderList"));
