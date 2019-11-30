@@ -3,6 +3,7 @@ package Model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 @Table(name = "CUSTOMER")
@@ -18,8 +19,8 @@ public class Customer implements Serializable {
     @Column(name = "Name")
     private String Name;
 
-    @Column(name = "Age")
-    private int Age;
+    @Column(name = "BirthDate")
+    private LocalDate BirthDate;
 
     @Column(name = "Address")
     private Address Address;
@@ -34,9 +35,9 @@ public class Customer implements Serializable {
     public Customer() {
     }
 
-    public Customer(String name, int age, Model.Address address, LocalDate joinDate, Model.Platform platform) {
+    public Customer(String name, LocalDate birthDate, Model.Address address, LocalDate joinDate, Model.Platform platform) {
         Name = name;
-        Age = age;
+        BirthDate = birthDate;
         Address = address;
         JoinDate = joinDate;
         Platform = platform;
@@ -54,12 +55,12 @@ public class Customer implements Serializable {
         Name = name;
     }
 
-    public int getAge() {
-        return Age;
+    public LocalDate getBirthDate() {
+        return BirthDate;
     }
 
-    public void setAge(int age) {
-        Age = age;
+    public void setBirthDate(LocalDate birthDate) {
+        BirthDate = birthDate;
     }
 
     public Model.Address getAddress() {
@@ -84,5 +85,35 @@ public class Customer implements Serializable {
 
     public void setPlatform(Model.Platform platform) {
         Platform = platform;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return CustomerId == customer.CustomerId &&
+                Objects.equals(Name, customer.Name) &&
+                Objects.equals(BirthDate, customer.BirthDate) &&
+                Objects.equals(Address, customer.Address) &&
+                Objects.equals(JoinDate, customer.JoinDate) &&
+                Platform == customer.Platform;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(CustomerId, Name, BirthDate, Address, JoinDate, Platform);
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "CustomerId=" + CustomerId +
+                ", Name='" + Name + '\'' +
+                ", BirthDate=" + BirthDate +
+                ", Address=" + Address +
+                ", JoinDate=" + JoinDate +
+                ", Platform=" + Platform +
+                '}';
     }
 }
