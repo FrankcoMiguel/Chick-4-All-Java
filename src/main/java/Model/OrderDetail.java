@@ -21,7 +21,8 @@ public class OrderDetail implements Serializable {
     @Column(name = "Quantity")
     private int Quantity;
 
-    @Column(name = "`Order`")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "`ORDER`")
     private Order Order;
 
     @Column(name = "Cost")

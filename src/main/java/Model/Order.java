@@ -3,6 +3,7 @@ package Model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,13 +18,15 @@ public class Order implements Serializable {
     @Column(name = "OrderId")
     private int OrderId;
 
-    @Column(name = "OrderDetails")
-    private List<OrderDetail> OrderDetails;
+    @OneToMany(mappedBy = "Order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderDetail> OrderDetails = new ArrayList<>();
 
-    @Column(name = "Customer")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CustomerId")
     private Customer Customer;
 
-    @Column(name = "AltAddress")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "AddressId", referencedColumnName = "AddressId")
     private Address AltAddress;
 
     @Column(name = "SubTotal")
@@ -40,14 +43,6 @@ public class Order implements Serializable {
 
     public int getOrderId() {
         return OrderId;
-    }
-
-    public List<OrderDetail> getOrderDetails() {
-        return OrderDetails;
-    }
-
-    public void setOrderDetails(List<OrderDetail> orderDetails) {
-        OrderDetails = orderDetails;
     }
 
     public Model.Customer getCustomer() {

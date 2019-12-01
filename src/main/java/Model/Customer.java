@@ -3,6 +3,8 @@ package Model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -22,8 +24,12 @@ public class Customer implements Serializable {
     @Column(name = "BirthDate")
     private LocalDate BirthDate;
 
-    @Column(name = "Address")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "AddressId", referencedColumnName = "AddressId")
     private Address Address;
+
+    @OneToMany(mappedBy = "Customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Order> Orders = new ArrayList<>();
 
     @Column(name = "JoinDate")
     private LocalDate JoinDate;
