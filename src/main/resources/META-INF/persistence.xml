@@ -8,6 +8,11 @@
         <!-- Classes -->
 
         <class>Model.User</class>
+        <class>Model.Customer</class>
+        <class>Model.Address</class>
+        <class>Model.Item</class>
+        <class>Model.OrderDetail</class>
+        <class>Model.Order</class>
 
         <!-- Classes -->
 

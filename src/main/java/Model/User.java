@@ -14,7 +14,7 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "UserId")
-    private long UserId;
+    private int UserId;
 
     @Column(name = "Phone", unique = true)
     private String Phone;
@@ -33,7 +33,7 @@ public class User implements Serializable {
         Password = password;
     }
 
-    public long getUserId() {
+    public int getUserId() {
         return UserId;
     }
 
