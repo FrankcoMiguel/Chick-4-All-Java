@@ -13,13 +13,13 @@ interface IUserService {
 
     //Read Services
     List<User> ReadUsers();
-    User ReadUser(Long Id);
+    User ReadUser(int Id);
 
     //Update Service
-    boolean UpdateUser(long Id, User user);
+    boolean UpdateUser(int Id, User user);
 
     //Remove Service
-    boolean RemoveUser(long Id);
+    boolean RemoveUser(int Id);
 
     //Login Service
     boolean LogIn(String Username, String Password);
@@ -95,7 +95,7 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public User ReadUser(Long Id) {
+    public User ReadUser(int Id) {
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
         User user = null;
 
@@ -125,7 +125,7 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public boolean UpdateUser(long Id, User user) {
+    public boolean UpdateUser(int Id, User user) {
 
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
 
@@ -159,7 +159,7 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public boolean RemoveUser(long Id) {
+    public boolean RemoveUser(int Id) {
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
 
         try {
