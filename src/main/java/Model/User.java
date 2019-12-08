@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "USER")
-@NamedQuery(name = "Users.findAll", query = "SELECT u FROM USER u")
+@NamedQuery(name = "Users.findAll", query = "SELECT u FROM User u")
 public class User implements Serializable {
 
     public static final long serialVersionUID = 1L;
