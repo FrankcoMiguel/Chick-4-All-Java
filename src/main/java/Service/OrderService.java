@@ -137,7 +137,7 @@ public class OrderService implements IOrderService {
             oldOrder.setAltAddress(order.getAltAddress());
             oldOrder.setDate(order.getDate());
             oldOrder.setSubTotal(order.getSubTotal());
-            oldOrder.setTotal(oldOrder.getTotal());
+            oldOrder.setTotal(order.getTotal());
             entityManager.getTransaction().commit();
             return true;
 
