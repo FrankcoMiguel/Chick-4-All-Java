@@ -71,7 +71,7 @@ public class UserService implements IUserService{
         try {
 
             entityManager.getTransaction().begin();
-            users = entityManager.createNamedQuery("Users.findAll").getResultList();
+            users = entityManager.createNamedQuery("User.findAll").getResultList();
             entityManager.getTransaction().commit();
 
         } catch (Exception e){
