@@ -1,7 +1,6 @@
 package Service;
 
 import Model.Customer;
-import Model.Order;
 import Model.OrderDetail;
 
 import javax.persistence.EntityManager;
