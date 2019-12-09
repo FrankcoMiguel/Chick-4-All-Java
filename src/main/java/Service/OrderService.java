@@ -70,7 +70,7 @@ public class OrderService implements IOrderService {
         try {
 
             entityManager.getTransaction().begin();
-            orders = entityManager.createNamedQuery("Users.findAll").getResultList();
+            orders = entityManager.createNamedQuery("Order.findAll").getResultList();
             entityManager.getTransaction().commit();
 
         } catch (Exception e){
