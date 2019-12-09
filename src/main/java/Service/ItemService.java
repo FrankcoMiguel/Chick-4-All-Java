@@ -66,7 +66,7 @@ public class ItemService implements IItemService {
         try {
 
             entityManager.getTransaction().begin();
-            items = entityManager.createNamedQuery("Users.findAll").getResultList();
+            items = entityManager.createNamedQuery("Item.findAll").getResultList();
             entityManager.getTransaction().commit();
 
         } catch (Exception e){
