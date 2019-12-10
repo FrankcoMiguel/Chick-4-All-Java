@@ -6,6 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "ITEM")
+@NamedQuery(name = "Item.findAll", query = "SELECT i FROM Item i")
 public class Item implements Serializable {
 
     private static final long serialVersionUID = 4L;

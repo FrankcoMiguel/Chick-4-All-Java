@@ -1,44 +1,43 @@
 package Service;
 
 
+import Model.Customer;
 import Model.User;
 
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.util.List;
 
-interface IUserService {
+interface ICustomerService{
 
-    //Create Service
-    boolean AddUser(User user);
 
-    //Read Services
-    List<User> ReadUsers();
-    User ReadUser(int Id);
+    boolean AddCustomer(Customer customer); //CREATE
 
-    //Update Service
-    boolean UpdateUser(int Id, User user);
+    List<Customer> ReadCustomers(); //SELECT ALL
 
-    //Remove Service
-    boolean RemoveUser(int Id);
+    Customer ReadCustomer(int Id); //SELECT by Id
 
-    //Login Service
-    boolean LogIn(String Username, String Password);
+    boolean UpdateCustomer(int Id, Customer customer); //UPDATE
+
+    boolean RemoveCustomer(int Id); //REMOVE
 
 }
 
-public class UserService implements IUserService{
+
+public class CustomerService implements ICustomerService {
 
     private static EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("Dev");
 
     @Override
-    public boolean AddUser(User user) {
+    public boolean AddCustomer(Customer customer) {
 
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
 
         try {
 
             entityManager.getTransaction().begin();
-            entityManager.persist(user);
+            entityManager.persist(customer);
             entityManager.getTransaction().commit();
             return true;
 
@@ -50,7 +49,7 @@ public class UserService implements IUserService{
 
             }
 
-            System.out.println("Error in AddUser Transaction");
+            System.out.println("Error in AddCustomer Transaction");
 
         } finally {
 
@@ -59,19 +58,18 @@ public class UserService implements IUserService{
         }
 
         return false;
-
     }
 
     @Override
-    public List<User> ReadUsers() {
+    public List<Customer> ReadCustomers() {
 
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
-        List<User> users = null;
+        List<Customer> customers = null;
 
         try {
 
             entityManager.getTransaction().begin();
-            users = entityManager.createNamedQuery("User.findAll").getResultList();
+            customers = entityManager.createNamedQuery("Customers.findAll").getResultList();
             entityManager.getTransaction().commit();
 
         } catch (Exception e){
@@ -82,7 +80,7 @@ public class UserService implements IUserService{
 
             }
 
-            System.out.println("Error in ReadUsers Transaction");
+            System.out.println("Error in ReadCustomers Transaction");
 
         } finally {
 
@@ -90,19 +88,19 @@ public class UserService implements IUserService{
 
         }
 
-        return users;
-
+        return customers;
     }
 
     @Override
-    public User ReadUser(int Id) {
+    public Customer ReadCustomer(int Id) {
+
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
-        User user = null;
+        Customer customer = null;
 
         try {
 
             entityManager.getTransaction().begin();
-            user = entityManager.find(User.class,Id);
+            customer = entityManager.find(Customer.class,Id);
             entityManager.getTransaction().commit();
 
         } catch (Exception e){
@@ -121,21 +119,22 @@ public class UserService implements IUserService{
 
         }
 
-        return user;
+        return customer;
     }
 
     @Override
-    public boolean UpdateUser(int Id, User user) {
-
+    public boolean UpdateCustomer(int Id, Customer customer) {
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
 
         try {
 
-            User oldUser = entityManager.find(User.class, Id);
+            Customer oldCustomer = entityManager.find(Customer.class, Id);
             entityManager.getTransaction().begin();
-            oldUser.setPhone(user.getPhone());
-            oldUser.setUsername(user.getUsername());
-            oldUser.setPassword(user.getPassword());
+            oldCustomer.setName(customer.getName());
+            oldCustomer.setAddress(customer.getAddress());
+            oldCustomer.setBirthDate(customer.getBirthDate());
+            oldCustomer.setJoinDate(customer.getJoinDate());
+            oldCustomer.setPlatform(customer.getPlatform());
             entityManager.getTransaction().commit();
             return true;
 
@@ -147,7 +146,7 @@ public class UserService implements IUserService{
 
             }
 
-            System.out.println("Error in UpdateUser Transaction");
+            System.out.println("Error in UpdateCustomer Transaction");
 
         } finally {
 
@@ -159,14 +158,14 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public boolean RemoveUser(int Id) {
+    public boolean RemoveCustomer(int Id) {
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
 
         try {
 
-            User oldUser = entityManager.find(User.class, Id);
+            Customer customer = entityManager.find(Customer.class, Id);
             entityManager.getTransaction().begin();
-            entityManager.remove(oldUser);
+            entityManager.remove(customer);
             entityManager.getTransaction().commit();
             return true;
 
@@ -178,7 +177,7 @@ public class UserService implements IUserService{
 
             }
 
-            System.out.println("Error in RemoveUser Transaction");
+            System.out.println("Error in RemoveCustomer Transaction");
 
         } finally {
 
@@ -188,33 +187,4 @@ public class UserService implements IUserService{
 
         return false;
     }
-
-    @Override
-    public boolean LogIn(String Username, String Password) {
-        EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
-        User user = null;
-
-        try {
-
-            entityManager.getTransaction().begin();
-            TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u WHERE u.Username = :username AND u.Password = :pass", User.class);
-            query.setParameter("username",Username);
-            query.setParameter("pass",Password);
-            entityManager.getTransaction().commit();
-            user = query.getSingleResult();
-
-        } catch (Exception e){
-
-            System.out.println("User not found!");
-            return false;
-
-        } finally {
-
-            entityManager.close();
-
-        }
-
-        return user != null;
-    }
-
 }
