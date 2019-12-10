@@ -5,8 +5,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "ORDER_DETAIL")
-@NamedQuery(name = "Detail.findAll", query = "SELECT od FROM Order_Detail od")
+@Table(name = "OrderDetail")
+@NamedQuery(name = "Detail.findAll", query = "SELECT d FROM OrderDetail d")
 public class OrderDetail implements Serializable {
 
     private static final long serialVersionUID = 5L;

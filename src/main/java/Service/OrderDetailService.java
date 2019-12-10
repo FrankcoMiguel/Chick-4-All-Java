@@ -65,7 +65,7 @@ public class OrderDetailService implements IOrderDetailService {
         try {
 
             entityManager.getTransaction().begin();
-            details = entityManager.createNamedQuery("Detail.findAllDetails").getResultList();
+            details = entityManager.createNamedQuery("Detail.findAll").getResultList();
             entityManager.getTransaction().commit();
 
         } catch (Exception e){

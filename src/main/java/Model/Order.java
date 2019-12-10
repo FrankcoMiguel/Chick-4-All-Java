@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "`ORDER`")
-@NamedQuery(name = "Order.findAll", query = "SELECT o FROM `ORDER` o")
+@Table(name = "`Order`")
+@NamedQuery(name = "Order.findAll", query = "SELECT o FROM Order o")
 public class Order implements Serializable {
 
     private static final long serialVersionUID = 6L;
