@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXSpinner?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Separator?>
@@ -19,7 +20,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <AnchorPane id="login-background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../Styles/Login.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
    <children>
@@ -42,7 +42,7 @@
                         <Image url="@../Media/logo-type-256.png" />
                      </image>
                   </ImageView>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Powered by Mr.Chutte Technology">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Powered by A&amp;F Technology">
                      <font>
                         <Font name="Helvetica" size="16.0" />
                      </font>
@@ -90,16 +90,18 @@
                            <children>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <JFXTextField id="text-field" fx:id="username" focusColor="#e85454" prefHeight="33.0" prefWidth="200.0" promptText="Username" unFocusColor="#ff9f9f">
+                                    <JFXTextField id="text-field" fx:id="username" focusColor="#e85454" onKeyTyped="#hideAlerts" prefHeight="33.0" prefWidth="200.0" promptText="Username" unFocusColor="#ff9f9f">
                                        <font>
                                           <Font name="Helvetica" size="18.0" />
                                        </font>
                                     </JFXTextField>
+                                    <FontAwesomeIconView fx:id="usernameAlert" fill="#e85454" glyphName="WARNING" size="15" visible="false" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0">
                                  <children>
-                                    <JFXPasswordField id="text-field" fx:id="password" focusColor="#e85454" prefHeight="32.0" prefWidth="200.0" promptText="Password" unFocusColor="#ff9f9f" />
+                                    <JFXPasswordField id="text-field" fx:id="password" focusColor="#e85454" onKeyTyped="#hideAlerts" prefHeight="32.0" prefWidth="200.0" promptText="Password" unFocusColor="#ff9f9f" />
+                                    <FontAwesomeIconView fx:id="passwordAlert" fill="#e85454" glyphName="WARNING" size="15" visible="false" />
                                  </children>
                               </HBox>
                            </children>

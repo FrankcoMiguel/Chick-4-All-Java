@@ -42,7 +42,7 @@
                                 <Image url="@../Media/logo-type-256.png" />
                             </image>
                         </ImageView>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Powered by Mr.Chutte Technology">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Powered by A&amp;F Technology">
                             <font>
                                 <Font name="Helvetica" size="16.0" />
                             </font>
