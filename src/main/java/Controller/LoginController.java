@@ -6,11 +6,15 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -27,6 +31,8 @@ public class LoginController implements Initializable {
     protected JFXTextField username;
     @FXML
     protected JFXPasswordField password;
+    @FXML
+    protected FontAwesomeIconView usernameAlert, passwordAlert;
     @FXML
     protected JFXButton loginButton;
     @FXML
@@ -51,35 +57,60 @@ public class LoginController implements Initializable {
         Login(); //Login method
         SwitchSignup();
 
-
-
     }
 
     private void Login(){
 
         loginButton.setOnAction(event -> {
 
+
             if (!username.getText().isEmpty() && !password.getText().isEmpty()){
+
+                //Thread loading 2 seconds
+                //Switch Login right side
 
                 boolean result = userService.LogIn(username.getText(), password.getText());
 
                 if (result){
 
-                    /*loginPane.setDisable(true);
-                    loginPane.setOpacity(0.40);
-                    loadingPane.setVisible(true); */
+                    abstractController.switchStage(loginButton, "BaseHomepage");
 
-                    abstractController.switchStage(loginButton,"BaseHomepage");
+                } else {
+
+                    usernameAlert.setVisible(true);
+                    passwordAlert.setVisible(true);
+
+                    username.clear();
+                    password.clear();
 
                 }
 
-                username.clear();
-                password.clear();
 
             } else {
 
-                //Alerts
-                System.out.println("Put your credentials");
+                if (username.getText().isEmpty()){
+
+                    usernameAlert.setVisible(true);
+                    usernameAlert.setOnMouseEntered(userEmpty -> {
+
+                        showEmptyAlert();
+                        usernameAlert.setVisible(false);
+
+                    });
+
+                }
+
+                if (password.getText().isEmpty()){
+
+                    passwordAlert.setVisible(true);
+                    passwordAlert.setOnMouseEntered(passEmpty -> {
+
+                        showEmptyAlert();
+                        passwordAlert.setVisible(false);
+
+                    });
+
+                }
 
             }
 
@@ -91,6 +122,33 @@ public class LoginController implements Initializable {
 
         AbstractController abstractController = new AbstractController();
         abstractController.switchStage(altButton, "Signup");
+
+    }
+
+    private void showEmptyAlert(){
+
+        abstractController.showDialog(usernameAlert, "Empty Field", "This field must be filled, please try again", "Alert");
+
+    }
+
+    private void showWrongUsername(){
+
+        abstractController.showDialog(usernameAlert, "Wrong username", "The username you have entered is incorrect, please try again","Alert");
+
+    }
+
+    private void showWrongPassword(){
+
+        abstractController.showDialog(passwordAlert, "Wrong password", "The password you have entered is incorrect, please try again","Alert");
+
+    }
+
+
+    @FXML
+    protected void hideAlerts(){
+
+        usernameAlert.setVisible(false);
+        passwordAlert.setVisible(false);
 
     }
 
