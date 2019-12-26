@@ -1,0 +1,15 @@
+
+.background{
+
+    -fx-background-color: #FFFFFF;
+
+}
+
+
+.close-button{
+
+    -fx-background-color: #E85454;
+    -fx-background-radius: 30px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 3, 0.0 , 0 , 1);
+
+}
