@@ -9,10 +9,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import java.io.IOException;
 class AbstractController {
@@ -97,6 +99,31 @@ class AbstractController {
 
             System.out.println("Error switching stages");
             e.printStackTrace();
+
+        }
+
+
+    }
+
+    void showDialog(Node control, String text, String message, String layout){
+
+        try {
+
+            Pane pane = (Pane) control.getScene().getRoot();
+            pane.getScene().getWindow().setOpacity(0.3);
+            pane.setDisable(true);
+
+            Parent root = FXMLLoader.load(getClass().getResource("../Layout/Dialog/"+(layout)+".fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root, 300, 250));
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
+
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+            System.out.println("Error displaying alert");
 
         }
 
